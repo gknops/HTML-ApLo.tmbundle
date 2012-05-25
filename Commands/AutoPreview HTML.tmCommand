@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/bin/sh
+
+if [ "X$HTML_APLO_PREVIEW_FILE" != 'X' ]; then
+	APLO_PREVIEW_HTML_FILE=$HTML_APLO_PREVIEW_FILE
+else
+	if [ "X$HTML_APLO_PREVIEW_AUTO" == 'X' ]; then
+		exit
+	else
+		for string in $TM_SCOPE
+		do
+			case "$string" in
+				*text.html*)
+					APLO_PREVIEW_HTML_FILE=$TM_FILEPATH
+				;;
+				*)
+					echo "Not a HTML file?"
+					exit
+				;;
+			esac
+		done
+	fi
+fi
+
+APLO_WINDOW_NAME=${HTML_APLO_WINDOW_TITLE:-$(basename "$TM_PROJECT_DIRECTORY") HTML Preview}
+
+APLO_DELETE_FILE=1
+
+export APLO_PREVIEW_HTML_FILE APLO_WINDOW_NAME APLO_DELETE_FILE
+
+aploPath=/tmp/aplo-html-$$.aplo
+
+env&gt;$aploPath
+echo $aploPath
+open -g $aploPath
+</string>
+	<key>input</key>
+	<string>none</string>
+	<key>inputFormat</key>
+	<string>text</string>
+	<key>name</key>
+	<string>AutoPreview HTML</string>
+	<key>outputCaret</key>
+	<string>afterOutput</string>
+	<key>outputFormat</key>
+	<string>text</string>
+	<key>outputLocation</key>
+	<string>toolTip</string>
+	<key>scope</key>
+	<string>text.html, source.css, source.js</string>
+	<key>semanticClass</key>
+	<string>callback.document.did-save</string>
+	<key>uuid</key>
+	<string>423F9253-8237-4382-B1F7-4B5E41DAB137</string>
+	<key>version</key>
+	<integer>2</integer>
+</dict>
+</plist>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>contactEmailRot13</key>
+	<string>tregv-grkgzngr@ovgneg.pbz</string>
+	<key>contactName</key>
+	<string>Gerd Knops</string>
+	<key>description</key>
+	<string>Semi-automatic HTML preview.
+</string>
+	<key>name</key>
+	<string>HTML-ApLo</string>
+	<key>uuid</key>
+	<string>1EE4A342-592D-4387-A26A-5D1209C4578F</string>
+</dict>
+</plist>
