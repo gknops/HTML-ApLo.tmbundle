@@ -5,26 +5,19 @@
 	<key>beforeRunningCommand</key>
 	<string>nop</string>
 	<key>command</key>
-	<string>#!/bin/sh
+	<string>#!/bin/bash
 
 if [ "X$HTML_APLO_PREVIEW_FILE" != 'X' ]; then
 	APLO_PREVIEW_HTML_FILE=$HTML_APLO_PREVIEW_FILE
 else
-	if [ "X$HTML_APLO_PREVIEW_AUTO" == 'X' ]; then
+	if [ "X$HTML_APLO_PREVIEW_NO_AUTO" != 'X' ]; then
 		exit
 	else
-		for string in $TM_SCOPE
-		do
-			case "$string" in
-				*text.html*)
-					APLO_PREVIEW_HTML_FILE=$TM_FILEPATH
-				;;
-				*)
-					echo "Not a HTML file?"
-					exit
-				;;
-			esac
-		done
+		if [[ "$TM_SCOPE" =~ ^text.html.basic ]]; then
+			APLO_PREVIEW_HTML_FILE=$TM_FILEPATH
+		else
+			exit 0
+		fi
 	fi
 fi
 
@@ -37,8 +30,8 @@ export APLO_PREVIEW_HTML_FILE APLO_WINDOW_NAME APLO_DELETE_FILE
 aploPath=/tmp/aplo-html-$$.aplo
 
 env&gt;$aploPath
-echo $aploPath
 open -g $aploPath
+echo "$APLO_WINDOW_NAME updated"
 </string>
 	<key>input</key>
 	<string>none</string>
