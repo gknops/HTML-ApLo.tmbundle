@@ -2,13 +2,13 @@
 
 The `HTML-ApLo.tmbundle` TextMate2 bundle provides support for a semi-automatic HTML Preview:
 
-![ApLo HTML Preview](ApLo-HTML-Preview.png)
+![ApLo HTML Preview](https://github.com/gknops/HTML-ApLo.tmbundle/raw/master/ApLo-HTML-Preview.png)
 
 By default it is tied to the `callback.document.did-save` semantic class and the `text.html, source.css and source.js` scopes, so it can update the preview whenever one of these file types is saved.
 
 It requires [`ApLo.tmbundle`](https://github.com/gknops/aplo.tmbundle).
 
-**NOTE**: either the [HTML\_APLO\_PREVIEW\_AUTO]() or the [HTML\_APLO\_PREVIEW\_FILE]() variable have to be set in a `.tm_properties` file for the preview to work.
+**NOTE**: either the `HTML\_APLO\_PREVIEW\_AUTO` or the `HTML\_APLO\_PREVIEW\_FILE` variable have to be set in a `.tm_properties` file for the preview to work.
 
 **NOTE**: this bundle does NOT replace the standard HTML bundle, you still need that for the language definition etc.
 
